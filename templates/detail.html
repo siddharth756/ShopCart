@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Detail-page{% endblock %}
+{% load static %}
+
+{% block content %}
+
+<div class="detail-container">
+<div class="detail-card">
+  <div class="detail-image">
+    <img src="{{product.image_url}}" alt="productImage" class="image">
+    <div class="detail-title mt-4">
+      <h4 id="pt{{product.id}}" style="color: var(--color);">{{product.name}}</h4>
+    </div>
+  </div>
+  <div class="detail-content">
+    <div class="detail-action">
+      <div class="detail-description">
+        <h3 class="mb-3" style="color: var(--color);">Description</h3>
+        <p style="color: rgba(128, 48, 234, 0.815);">{{product.description}}</p>
+      </div>
+      <div class="price" style="color: rgba(148, 62, 247, 0.883);">
+        <h3 class="mb-3" style="color: var(--color);">Price</h3>
+        &#x20B9;<span id="pp{{product.id}}">{{product.price}}</span>
+      </div>
+      <button class="cart-button atc mt-3" id="{{product.id}}">
+        <span>Add to cart</span>
+      </button>
+    </div>
+  </div>
+</div>
+  <h4 style="color: var(--color);cursor: pointer;" onclick="history.back()">&larr; Back</h4>
+</div>
+{% endblock %}

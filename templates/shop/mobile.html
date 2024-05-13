@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Mobile & Tablets{% endblock %}
+{% load static %}
+
+{% block content %}
+
+<div class="shop">
+    <div class="product-show">
+        {% for product in products %}
+        <div class="card">
+            <div class="image_container">
+                <a href="{% url 'ecom_app:detail' product.id %}">
+                    <img src="{{product.image_url}}" alt="productImage" class="image" id="pi{{product.id}}">
+                </a>
+            </div>
+            <div class="title">
+                <span id="pt{{product.id}}">{{product.name}}</span>
+            </div>
+            <div class="action d-flex col">
+                <div class="price">
+                    &#x20B9;<span id="pp{{product.id}}">{{product.price}}</span>
+                </div>
+                <button class="cart-button atc" id="{{product.id}}">
+                    <span>Add to cart</span>
+                </button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

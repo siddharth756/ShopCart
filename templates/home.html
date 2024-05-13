@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% block title %} Home-page {% endblock %}
+{% block content %}
+{% load static %}
+
+<!-- ========================= slider ====================== -->
+
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active cib"
+      aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2" class="cib"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active" data-bs-interval="3000">
+      <img src="{% static 'img/slider1.jpg' %}" class="d-block w-100" alt="...">
+      <div class="slider-content">
+        <h4>PlayStation VR Mega<br> Pack Bundle 3</h4>
+        <p>There are many variations passages of available, but the majority have suffered alteration some form, by
+          injected humour.</p>
+      </div>
+    </div>
+    <div class="carousel-item" data-bs-interval="3000">
+      <img src="{% static 'img/slider2.jpg' %}" class="d-block w-100" alt="...">
+      <div class="slider-content">
+        <h4>Disney Colloction Toy <br> Buzz Lightyear</h4>
+        <p>There are many variations passages of available, but the majority have suffered alteration some form, by
+          injected humour.</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev sb" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon sbi" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next sb" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon sbi" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<!-- ============================== category ====================== -->
+
+<div class="category-container">
+  <div class="category-header">
+    <h5>Categories</h5>
+  </div>
+  <div class="categories">
+    {% for category in categories %}
+    <a href="/{{category.page_url}}/" class="text-decoration-none">
+      <div class="card">
+        <img src="../static/img/category/{{category.image_url}}" class="card-img-top" alt="categoryImage">
+        <div>
+          <p>{{category.name}}</p>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- ======================= Top products ======================= -->
+
+<div class="topproduct-container">
+
+  <div class="d-flex justify-content-between align-items-center pt-2 pb-4 ps-4 tpd">
+    <h3 style="color: var(--color);">Special Products</h3>
+    <div class="me-3 tpl" style="height: 5px;width: 200px;background-color: var(--color);"></div>
+  </div>
+
+  <div class="topproducts">
+    {% for product in topproducts %}
+    <div class="card">
+      <div class="image_container">
+        <a href="{% url 'ecom_app:detail' product.pid %}">
+          <img src="{{product.image_url}}" alt="productImage" class="image" id="pi{{product.pid}}">
+        </a>
+      </div>
+      <div class="title">
+        <span id="pt{{product.pid}}">{{product.name}}</span>
+      </div>
+      <div class="action">
+        <div class="price">
+          &#x20B9;<span id="pp{{product.pid}}">{{product.price}}</span>
+        </div>
+        <button class="cart-button atc" id="{{product.pid}}">
+          <span>Add to cart</span>
+        </button>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+
+<!-- ================================== banners ========================== -->
+
+<div class="banner">
+  <div class="banner1">
+    <img src="{% static 'img/banner1.jpg' %}" alt="bannerimage">
+    <div class="banner-content">
+      <h3>Meet Alpinerx Blue <br> New Version</h3>
+      <h6>New arrival of Desteny</h6>
+      <a href="{% url 'ecom_app:electronics' %}"><button class="banner-button">Shop Now</button></a>
+    </div>
+  </div>
+  <div class="banner2">
+    <img src="{% static 'img/banner2.jpg' %}" alt="bannerimage">
+    <div class="banner-content">
+      <h3>Put The World <br> On Mute </h3>
+      <h6>collection S521</h6>
+      <a href="{% url 'ecom_app:electronics' %}"><button class="banner-button">Shop Now</button></a>
+    </div>
+  </div>
+</div>
+
+<!-- =============================  brands ====================== -->
+
+<div class="brand-container">
+  <div class="d-flex justify-content-between align-items-center pt-4 ps-4 bd">
+    <h2 style="color: var(--color);">Top Brands</h2>
+    <div class="me-3 bl" style="height: 5px;width: 200px;background-color: var(--color);"></div>
+  </div>
+  <div class="brand slider">
+    <div class="brand-item">
+      <div><img src="{% static 'brand/brand1.png' %}" alt="brands"></div>
+    </div>
+    <div class="brand-item">
+      <div><img src="{% static 'brand/brand2.png' %}" alt="brands"></div>
+    </div>
+    <div class="brand-item">
+      <div><img src="{% static 'brand/brand3.png' %}" alt="brands"></div>
+    </div>
+    <div class="brand-item">
+      <div><img src="{% static 'brand/brand4.png' %}" alt="brands"></div>
+    </div>
+    <div class="brand-item">
+      <div><img src="{% static 'brand/brand5.png' %}" alt="brands"></div>
+    </div>
+    <div class="brand-item">
+      <div><img src="{% static 'brand/brand6.png' %}" alt="brands"></div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

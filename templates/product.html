@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}Products{% endblock %}
+{% load static %}
+
+{% block content %}
+
+<div class="p-container">
+    <div class="p-filter">
+        <div class="filter-card">
+            <div class="filter-header">
+                <h4 style="color: var(--color);margin-left: 8px;">Filter By Price :</h4>
+            </div>
+            <div class="filter-body">
+                <a href="{% url 'ecom_app:filter_products' '0_500' %}"><div>0 - 500</div></a>
+                <a href="{% url 'ecom_app:filter_products' '500_1000' %}"><div>500 - 1000</div></a>
+                <a href="{% url 'ecom_app:filter_products' '1000_10000' %}"><div>1000 - 10000</div></a>
+                <a href="{% url 'ecom_app:filter_products' '10000_up' %}"><div>10000 and up</div></a>
+                <a href="{% url 'ecom_app:filter_products' 'all' %}"><div>All Products</div></a>
+            </div>
+        </div>
+    </div>
+    <div class="p-show">
+        {% for product in products %}
+        <div class="card">
+            <div class="image_container">
+                <a href="{% url 'ecom_app:detail' product.id %}">
+                    <img src="{{product.image_url}}" alt="productImage" class="image" id="pi{{product.id}}">
+                </a>
+            </div>
+            <div class="title">
+                <span id="pt{{product.id}}">{{product.name}}</span>
+            </div>
+            <div class="action d-flex col">
+                <div class="price">
+                    &#x20B9;<span id="pp{{product.id}}">{{product.price}}</span>
+                </div>
+                <button class="cart-button atc" id="{{product.id}}">
+                    <span>Add to cart</span>
+                </button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="paginator-div">
+    <div class="current">
+        Page {{ products.number }} of {{ products.paginator.num_pages }}.
+    </div>
+    <div class="pagination">
+        {% if products.has_previous %}
+        <a href="?page=1" class="page-link">&laquo; first</a>
+        <a href="?page={{ products.previous_page_number }}" class="page-link">previous</a>
+        {% endif %} {% if products.has_next %}
+        <a href="?page={{ products.next_page_number }}" class="page-link">next</a>
+        <a href="?page={{ products.paginator.num_pages }}" class="page-link">last &raquo;</a>
+        {% endif %}
+    </div>
+</div>
+
+
+{% endblock %}

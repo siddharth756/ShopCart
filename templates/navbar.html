@@ -1,0 +1,55 @@
+{% load static %}
+
+<!-- ================================= navbar ========================= -->
+
+<nav class="main-nav">
+  <div class="nav container-md">
+    <div class="logo">
+      <a href="{% url 'ecom_app:home' %}"> 
+        shopcart
+        <svg id="mySVG" viewBox="0 -40 312 312">
+        <path fill="none" stroke="var(--color)" stroke-width="10" id="triangle" d="M150 0 L75 200 L225 200 Z" />
+        </svg>
+      </a>
+    </div>
+    <div class="nav-items">
+      <li><a href="{% url 'ecom_app:home' %}">Home</a></li>
+      <li><a href="{% url 'ecom_app:products' %}">Products</a></li>
+      <li><a href="{% url 'ecom_app:home' %}">Service</a></li>
+    </div>
+
+    <div class="cartLogo me-1">
+      <a id="cart" href="#" data-bs-html="true" data-bs-container="body" data-bs-toggle="popover"
+        data-bs-placement="bottom" data-bs-content=" ">
+        <i class="fa-solid fa-cart-shopping" style="color: #7f14dcde;">
+        </i>
+      </a>
+    </div>
+  </div>
+
+  <!-- =============================== searchbar ========================= -->
+
+  <div class="searchbar d-flex justify-content-between container-md">
+    <div class="dropdown">
+      <button class="dropdown-toggle dropdownButton" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Categories
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="{% url 'ecom_app:home' %}">Go To Home</a></li>
+        <li><a class="dropdown-item" href="{% url 'ecom_app:mobiles' %}">Mobile & Teblets</a></li>
+        <li><a class="dropdown-item" href="{% url 'ecom_app:tvs' %}">TVs & Appliences</a></li>
+        <li><a class="dropdown-item" href="{% url 'ecom_app:electronics' %}">Electronics</a></li>
+        <li><a class="dropdown-item" href="{% url 'ecom_app:fashion' %}">Fashion</a></li>
+        <li><a class="dropdown-item" href="{% url 'ecom_app:beauty' %}">Beauty</a></li>
+        <li><a class="dropdown-item" href="{% url 'ecom_app:grocery' %}">Grocery</a></li>
+        <li><a class="dropdown-item" href="{% url 'ecom_app:furniture' %}">Furniture</a></li>
+      </ul>
+    </div>
+
+    <form class="d-flex searchForm" role="search" method="GET" action="{% url 'ecom_app:products' %}">
+      <input class="searchInput" type="search" placeholder="Search" aria-label="Search" name="search_item" />
+      <button class="searchBtn" type="submit">Search</button>
+    </form>
+  </div>
+
+</nav>
