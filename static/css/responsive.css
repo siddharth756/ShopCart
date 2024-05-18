@@ -442,6 +442,16 @@
     }
 }
 
+@media screen and (max-width: 500px) {
+    .paginator-div {
+        flex-direction: column;
+    }
+
+    .paginator-div .pagination .page-link {
+        font-size: 0.8em;
+    }
+}
+
 @media screen and (max-width: 450px) {
 
     .nav .nav-items li,
@@ -617,5 +627,8 @@
     .detail-image .image {
         width: 180px;
         object-fit: contain;
+    }
+    .paginator-div .pagination .page-link {
+        font-size: 0.6em;
     }
 }
