@@ -5,6 +5,7 @@ app_name = "ecom_app"
 
 urlpatterns = [
     path('',homeview,name="home"),
+    
     path('products/',productview,name="products"),
     path('products/<int:pk>',detailview.as_view(),name="detail"),
     path('checkout/',checkoutview,name="checkout"),

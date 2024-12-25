@@ -9,11 +9,12 @@
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active cib"
       aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2" class="cib"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"
+      class="cib"></button>
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active" data-bs-interval="3000">
-      <img src="{% static 'img/slider1.jpg' %}" class="d-block w-100" alt="...">
+      <img src="{% static 'img/slider1.jpg' %}" class="w-100 slide-img" alt="...">
       <div class="slider-content">
         <h4>PlayStation VR Mega<br> Pack Bundle 3</h4>
         <p>There are many variations passages of available, but the majority have suffered alteration some form, by
@@ -21,7 +22,7 @@
       </div>
     </div>
     <div class="carousel-item" data-bs-interval="3000">
-      <img src="{% static 'img/slider2.jpg' %}" class="d-block w-100" alt="...">
+      <img src="{% static 'img/slider2.jpg' %}" class="w-100 slide-img" alt="...">
       <div class="slider-content">
         <h4>Disney Colloction Toy <br> Buzz Lightyear</h4>
         <p>There are many variations passages of available, but the majority have suffered alteration some form, by
@@ -41,17 +42,17 @@
 
 <!-- ============================== category ====================== -->
 
+<div class="category-header">
+  <h6>Categories</h6>
+</div>
 <div class="category-container">
-  <div class="category-header">
-    <h5>Categories</h5>
-  </div>
   <div class="categories">
     {% for category in categories %}
     <a href="/{{category.page_url}}/" class="text-decoration-none">
       <div class="card">
         <img src="../static/img/category/{{category.image_url}}" class="card-img-top" alt="categoryImage">
         <div>
-          <p>{{category.name}}</p>
+          <p class="category-name">{{category.name}}</p>
         </div>
       </div>
     </a>
@@ -61,13 +62,12 @@
 
 <!-- ======================= Top products ======================= -->
 
+
+<div class="category-header">
+  <h6>Top Products</h6>
+</div>
+
 <div class="topproduct-container">
-
-  <div class="d-flex justify-content-between align-items-center pt-2 pb-4 ps-4 tpd">
-    <h3 style="color: var(--color);">Special Products</h3>
-    <div class="me-3 tpl" style="height: 5px;width: 200px;background-color: var(--color);"></div>
-  </div>
-
   <div class="topproducts">
     {% for product in topproducts %}
     <div class="card">

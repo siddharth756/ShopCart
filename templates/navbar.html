@@ -2,13 +2,13 @@
 
 <!-- ================================= navbar ========================= -->
 
-<nav class="main-nav">
-  <div class="nav container-md">
+<nav class="main-nav container-fluid">
+  <div class="nav">
     <div class="logo">
-      <a href="{% url 'ecom_app:home' %}"> 
+      <a href="{% url 'ecom_app:home' %}">
         shopcart
         <svg id="mySVG" viewBox="0 -40 312 312">
-        <path fill="none" stroke="var(--color)" stroke-width="10" id="triangle" d="M150 0 L75 200 L225 200 Z" />
+          <path fill="none" stroke="var(--color)" stroke-width="10" id="triangle" d="M150 0 L75 200 L225 200 Z" />
         </svg>
       </a>
     </div>
@@ -23,13 +23,14 @@
         data-bs-placement="bottom" data-bs-content=" ">
         <i class="fa-solid fa-cart-shopping" style="color: #7f14dcde;">
         </i>
+        <span id="cart-badge">0</span>
       </a>
     </div>
   </div>
 
   <!-- =============================== searchbar ========================= -->
 
-  <div class="searchbar d-flex justify-content-between container-md">
+  <div class="searchbar d-flex justify-content-between">
     <div class="dropdown">
       <button class="dropdown-toggle dropdownButton" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         Categories
@@ -47,7 +48,8 @@
     </div>
 
     <form class="d-flex searchForm" role="search" method="GET" action="{% url 'ecom_app:products' %}">
-      <input class="searchInput" type="search" placeholder="Search" aria-label="Search" name="search_item" />
+      <input class="searchInput" type="search" placeholder="Search" aria-label="Search"
+        name="search_item" id='autocomplete' />
       <button class="searchBtn" type="submit">Search</button>
     </form>
   </div>

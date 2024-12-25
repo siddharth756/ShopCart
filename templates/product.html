@@ -21,6 +21,7 @@
         </div>
     </div>
     <div class="p-show">
+        {% if products %}
         {% for product in products %}
         <div class="card">
             <div class="image_container">
@@ -41,21 +42,51 @@
             </div>
         </div>
         {% endfor %}
-    </div>
-</div>
-<div class="paginator-div">
-    <div class="current">
-        Page {{ products.number }} of {{ products.paginator.num_pages }}.
-    </div>
-    <div class="pagination">
-        {% if products.has_previous %}
-        <a href="?page=1" class="page-link">&laquo; first</a>
-        <a href="?page={{ products.previous_page_number }}" class="page-link">previous</a>
-        {% endif %} {% if products.has_next %}
-        <a href="?page={{ products.next_page_number }}" class="page-link">next</a>
-        <a href="?page={{ products.paginator.num_pages }}" class="page-link">last &raquo;</a>
+        {% else %}
+        <div class="product-empty">
+            <p>Not Available</p>
+        </div>
         {% endif %}
     </div>
+</div>
+
+<!-- --------------- pagination ------------------ -->
+
+<div class="paginator-div">
+    <div class="current" style="color: var(--color);">
+        Page {{ products.number }} of {{ products.paginator.num_pages }}.
+    </div>
+
+        <nav aria-label="Page navigation example">
+  <ul class="pagination">
+    {% if products.has_previous %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{ products.previous_page_number }}" aria-label="Previous">
+        Previous
+      </a>
+    </li>
+    {% endif %}
+
+    {% for pg in products.paginator.page_range %}
+        {% if products.number == pg %}
+            <li class="page-item"><a class="page-link active_page" href="?page={{pg}}">{{pg}}</a>
+            </li>
+        {% else %}
+            <li class="page-item"><a class="page-link" href="?page={{pg}}">{{pg}}</a>
+            </li>
+        {% endif %}
+    {% endfor %}
+
+    {% if products.has_next %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{ products.next_page_number }}" aria-label="Next">
+        Next
+      </a>
+    </li>
+    {% endif %}
+  </ul>
+</nav>
+
 </div>
 
 
