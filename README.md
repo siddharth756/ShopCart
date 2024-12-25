@@ -6,7 +6,7 @@
 <br>
 ▪ This project deployed on pythonanywhere.
 <hr>
-<img src="https://github.com/siddharth756/ShopCart/tree/main/static/img/GreatKart.png" alt="ShopCart Image">
+<img src="https://github.com/siddharth756/ShopCart/blob/main/static/img/GreatKart.png" alt="ShopCart Image">
 <hr>
 
 `` Made with 💜 By Siddharth.``
